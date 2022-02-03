@@ -39,7 +39,9 @@ const IssuesList = () => {
               ? issuesArray.map((item: any) => {
                   return (
                     <li key={item.id}>
-                      <Issue title={item.title} description={item.body} />
+                      <a href={item.url} target="_blank" rel="noreferrer">
+                        <Issue title={item.title} description={item.body} />
+                      </a>
                     </li>
                   );
                 })

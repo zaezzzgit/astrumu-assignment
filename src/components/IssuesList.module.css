@@ -14,6 +14,11 @@
   max-width: 500px;
 }
 
+.wrapper li a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .wrapper ul button {
   margin-top: 10px;
   margin-bottom: 25px;

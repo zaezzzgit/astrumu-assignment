@@ -28,7 +28,7 @@ const Header: React.FC = () => {
         {state.userDataLoaded && userNameIsValid ? (
           <div className={classes.account_wrapper}>
             <div className={classes.account_name}>
-              {state.userName.split(" ")[0]}
+              {state.userName}
             </div>
             <div className={classes.account_box}>
               {state.userName.charAt(0)}

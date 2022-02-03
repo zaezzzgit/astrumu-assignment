@@ -2,6 +2,7 @@ export interface iIssue {
   id: string;
   title: string;
   body: string;
+  url: string;
 }
 
 export interface iOwnerRepo {

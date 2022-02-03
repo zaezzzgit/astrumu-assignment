@@ -12,6 +12,7 @@ export const FETCH_ISSUES = gql`
             id
             title
             body
+            url
           }
         }
       }
