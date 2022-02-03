@@ -1,7 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import { token } from "./config";
 
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -15,6 +14,9 @@ import {
   HttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+
+// Please set-up you github/graphql api access token here:
+const token: string | null = null;
 
 const authLink = setContext((_, { headers }) => {
   return {
