@@ -1,0 +1,45 @@
+.wrapper {
+  border-right: 2px solid rgb(245, 245, 245);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  margin-left: 40px;
+  align-items: center;
+}
+
+button {
+  margin-bottom: 40px;
+  margin-top: 10px;
+  align-self: center;
+}
+
+.account_details {
+  margin-left: 22px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  min-width: 200px;
+}
+
+.account_details_userData {
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.account_details_field {
+  display: flex;
+  align-items: center;
+}
+
+.account_details img {
+  max-width: 20px;
+}
+
+.account_details span {
+  margin-left: 5px;
+  vertical-align: middle;
+  font-size: 12px;
+  font-weight: 500;
+}

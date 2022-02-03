@@ -1,0 +1,11 @@
+.wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    margin-bottom: 90px;
+}
+
+.content_wrapper {
+    margin-top: 60px;
+}

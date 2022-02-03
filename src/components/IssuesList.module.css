@@ -1,0 +1,26 @@
+.wrapper {
+  margin-left: 50px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.wrapper ul {
+  list-style: none;
+}
+
+.wrapper li {
+  padding: 10px;
+  padding-left: 0;
+  max-width: 500px;
+}
+
+.wrapper ul button {
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.header_text {
+  margin: 55px 0 40px 40px;
+  font-size: 16px;
+  font-weight: 600;
+}
