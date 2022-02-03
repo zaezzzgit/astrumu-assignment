@@ -6,6 +6,11 @@
   margin-bottom: 90px;
 }
 
+.fallback {
+  text-align: center;
+  margin-top: 60px;
+}
+
 .form_wrapper {
   margin-top: 60px;
 }
@@ -67,8 +72,8 @@ textarea:focus {
 }
 
 .valid {
-    background-color: rgb(225, 255, 221) !important;
-  }
+  background-color: rgb(225, 255, 221) !important;
+}
 
 .form input::placeholder,
 textarea::placeholder {

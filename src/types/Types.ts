@@ -13,6 +13,9 @@ export interface RepoItem {
   id: string;
   name: string;
   description: string;
+  primaryLanguage: {
+    name: string;
+  };
 }
 
 export class User {

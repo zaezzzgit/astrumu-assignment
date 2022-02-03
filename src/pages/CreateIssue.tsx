@@ -27,6 +27,7 @@ const CREATE_ISSUE = gql`
 const CreateIssue: React.FC<RouteComponentProps> = ({ history }) => {
   const dispatch = useAppDispatch();
   const owner = useAppSelector((state) => state.issuesSlice.ownerRepo);
+
   useEffect(() => {
     dispatch(setTitle("Create Issue for: " + owner.name));
   }, [dispatch, owner.name]);
@@ -36,10 +37,10 @@ const CreateIssue: React.FC<RouteComponentProps> = ({ history }) => {
   const [issueTitleWasTouched, setIssueTitleWasTouched] = useState(false);
   const [issueDescriptionWasTouched, setIssueDescriptionWasTouched] =
     useState(false);
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const titleIsValid = issueTitle.trim().length >= 3;
   const descriptionIsValid = issueDescription.trim().length >= 3;
-  const formIsValid = titleIsValid && descriptionIsValid;
 
   const issueTitleFocusHandler = () => {
     if (!issueTitleWasTouched) {
@@ -67,7 +68,7 @@ const CreateIssue: React.FC<RouteComponentProps> = ({ history }) => {
 
   const formSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(issueTitle, issueDescription, owner.id);
+    setFormIsValid(false);
     addIssue({
       variables: {
         repoId: owner.id,
@@ -77,21 +78,16 @@ const CreateIssue: React.FC<RouteComponentProps> = ({ history }) => {
     });
   };
 
-  const [addIssue, { data, loading, error }] = useMutation(CREATE_ISSUE, {
+  const [addIssue, { data }] = useMutation(CREATE_ISSUE, {
     refetchQueries: [{ query: FETCH_ISSUES, variables: { repoId: owner.id } }],
   });
-  if (loading) console.log("Submitting...");
-  if (error) console.log(`Submission error! ${error.message}`);
-
-  if (data) {
-    console.log("Submitted");
-  }
 
   useEffect(() => {
+    setFormIsValid(titleIsValid && descriptionIsValid);
     if (data) {
       history.push("/");
     }
-  }, [history, data]);
+  }, [history, data, titleIsValid, descriptionIsValid]);
 
   let titleInputClasses = classes.input__title;
 
@@ -111,6 +107,10 @@ const CreateIssue: React.FC<RouteComponentProps> = ({ history }) => {
 
   if (issueDescriptionWasTouched && !descriptionIsValid) {
     descriptionInputClasses += " " + classes.invalid;
+  }
+
+  if (owner.name === "" || owner.name === null) {
+    return <div className={classes.fallback}>No repository selected.</div>;
   }
 
   return (

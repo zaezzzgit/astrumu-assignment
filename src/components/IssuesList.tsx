@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../store/hooks";
+import { Fragment } from "react";
+import { useQuery } from "@apollo/client";
+
 import Button from "../UI/Button";
 import LoaderSpinner from "../UI/LoaderSpinner";
 import Issue from "./Issue";
 import classes from "./IssuesList.module.css";
-
-import { useAppSelector } from "../store/hooks";
-import { Fragment } from "react";
-import { useQuery } from "@apollo/client";
 
 import { FETCH_ISSUES } from "../store/queries";
 import { iIssue } from "../types/Types";
@@ -35,18 +35,20 @@ const IssuesList = () => {
           <div className={classes.header_text}>Issues for: {repoName}</div>
           <ul>
             {loading && <LoaderSpinner withText={true} />}
-            {issuesArray &&
-              issuesArray.map((item: any) => {
-                return (
-                  <li key={item.id}>
-                    <Issue title={item.title} description={item.body} />
-                  </li>
-                );
-              })}
-
-            <Link to="/create-issue">
-              <Button color="#f15d5d">CREATE ISSUE</Button>
-            </Link>
+            {issuesArray.length > 0
+              ? issuesArray.map((item: any) => {
+                  return (
+                    <li key={item.id}>
+                      <Issue title={item.title} description={item.body} />
+                    </li>
+                  );
+                })
+              : !loading && <p>No issues found</p>}
+            <div>
+              <Link to="/create-issue">
+                <Button color="#f15d5d">CREATE ISSUE</Button>
+              </Link>
+            </div>
           </ul>
         </Fragment>
       ) : (

@@ -37,6 +37,9 @@ export const FETCH_REPOS_LIST = gql`
             name
             description
             url
+            primaryLanguage {
+              name
+            }
           }
         }
       }

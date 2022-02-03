@@ -1,10 +1,12 @@
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { token } from "./config";
+
+import ReactDOM from "react-dom";
+import App from "./App";
+
+import "./index.css";
 
 import {
   ApolloClient,
@@ -24,11 +26,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 type RepositoryConnection = {
-  edges?: [];
   nodes: [];
-  pageInfo?: any;
-  totalCount?: any;
-  totalDiskUsage?: any;
 };
 
 const client = new ApolloClient({

@@ -13,8 +13,8 @@ import mailIcon from "../img/email-icon.svg";
 import reposIcon from "../img/repos-num-icon.svg";
 import classes from "./ReposSection.module.css";
 
+// could make the userHandle an input field to load repos for a different user. Hard coded for now.
 const userHandle: string = "zaezzzgit";
-// const userHandle: string = "vtereshyn";
 let loadingByButton: boolean = false;
 let user: User = new User();
 

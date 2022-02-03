@@ -1,5 +1,6 @@
-import Card from "../UI/Card";
 import { RepoItem } from "../types/Types";
+
+import Card from "../UI/Card";
 
 import repoIcon from "../img/repo-icon.svg";
 import classes from "./Repo.module.css";
@@ -8,6 +9,10 @@ const Repo: React.FC<{
   repo: RepoItem;
   onClick: () => void;
 }> = (props) => {
+  let repoPirmaryLanguage: string = "";
+  if (props.repo.primaryLanguage) {
+    repoPirmaryLanguage = props.repo.primaryLanguage.name;
+  }
   return (
     <Card pointerOnHover={true}>
       <div className={classes.wrapper} onClick={props.onClick}>
@@ -18,9 +23,11 @@ const Repo: React.FC<{
             {props.repo.description}
           </div>
           <div className={classes.content_tags}>
-            <span>javascript</span>
-            <span>react</span>
-            <span>frontend</span>
+            {repoPirmaryLanguage.trim() !== "" ? (
+              <span>{repoPirmaryLanguage}</span>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
